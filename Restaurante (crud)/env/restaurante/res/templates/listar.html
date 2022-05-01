@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titulo %} Listar platos {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        Platos       
+    </div>    
+    <div class="card-body">
+        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Crear plato</a> 
+        <h4 class="card-title">Lista de platos</h4>
+         <table class="table">
+             <thead>
+                 <tr>
+                     <th>Id</th>
+                     <th>Nombre</th>
+                     <th>Tiempo de preparación</th>
+                     <th>Categoria</th>
+                     <th>Alimento</th>
+                     <th>Acciones</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 {% for plato in platos %}
+                 <tr>
+                     <td>{{plato.id}}</td>
+                     <td>{{plato.nombre}}</td>
+                     <td>{{plato.tiempoPreparacion}}</td>
+                     <td>{{plato.categoria}}</td>
+                     <td><select name="" id="">             
+                        {% for ali in plato.alimento.all %}
+                        <option value="">{{ ali.nombre }}</option>
+                        {% endfor %}
+                     </select>
+                     </td>
+                     <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editar' plato.id %}" role="button">Editar</a> 
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' plato.id %}" role="button">Borrar</a>
+                    </td>
+                 </tr>
+                 {% endfor %}
+             </tbody>
+         </table>
+                  
+    </div>
+
+{% endblock %}

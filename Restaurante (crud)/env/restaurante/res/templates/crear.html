@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %} Listar platos {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        Crear
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Crear plato</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" name="editar" value="Crear">         
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
